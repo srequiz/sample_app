@@ -11,5 +11,14 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", help_path
     assert_select "a[href=?]", about_path
     assert_select "a[href=?]", contact_path
+    get signup_path
+    assert_select "title", full_title("Sign up")
   end
+  
+  class ApplicationHelperTest < ActionView::TestCase
+  test "full title helper" do
+    assert_equal full_title,         FILL_IN
+    assert_equal full_title("Help"), FILL_IN
+  end
+end
 end
